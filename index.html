@@ -75,7 +75,62 @@
         </div>
     </header>
 
-   
+  <main>
+<!-- main section has contact info listed out in two columns such as the about section. -->
+            <div class="contact-container">
+
+                <div class="contact-content-con">
+                    <div class="left-contact">
+                        <h4>Contact me here</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Location</span>
+                                </div>
+                                <p>
+                                    : Parsippany, New Jersey
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email</span>
+                                </div>
+                                <p>
+                                    <span>: mustafa.aslamy96@gmail.com</span>
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <span>Mobile Number</span>
+                                </div>
+                                <p>
+                                    <span>: 862-207-9656</span>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="right-contact">
+                        <form name = "submit-to-google-sheet" onsubmit="message()" class="contact-form">
+                            <div class="input-control i-c-2">
+                                <input type="text" name="name" id="name" required placeholder="YOUR NAME">
+                                <input type="email" name="email" required placeholder="YOUR EMAIL">
+                            </div>
+                            <div class="input-control">
+                                <textarea name="message"  cols="15" rows="5" placeholder="Message Here..."></textarea>
+                            </div>
+                            <button type="submit" class="button">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </main>
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwmb0fOL9047CIjWqI83QmuLURpE0u4Gw2QUO6-qxN9uqNOml1fYdXVpHaSzUB7kwT9/exec'
