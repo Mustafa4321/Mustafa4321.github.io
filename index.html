@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="styles.css" rel="stylesheet">
+    <title>My Webpage</title>
+    <script>
+        /* added event listeners and query selectors for the submit button below for the contact info form. alert sent that required fields are filled out. */
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelector('form').addEventListener('submit', function(event){
+                let name = document.querySelector('#name').value;
+                alert('Thank you ' + name +', message sent.');
+                event.preventDefault();
+            });
+        });
+
+    </script>
+</head>
+<!-- used bootstrap to figure out navigation bar to list out portfolio menu items -->
+<body class="main-content">
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand mb-0 h1">
+            <img class="d-inline block align-top" src="101179920-science-computer-logo-icon-design.jpeg" width="30" height="30">
+            CS Portfolio
+        </a>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a href="Projects.html" class="nav-link">
+                        Projects
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="Certificates.html" class="nav-link">
+                        Certificates
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="Resume.html" class="nav-link">
+                        Resume
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+
+<!-- used css references online to break up page into 2 columns with proper dimensions and colors as referenced online -->
+    <header class="container header active" id="home">
+        <div class="header-content">
+            <div class="left-header">
+                <div class="h-shape"></div>
+                <div class="image">
+                    <img src="IMG_5046.jpeg" alt="picture of Mustafa Aslamy">
+                </div>
+            </div>
+            <div class="right-header">
+                <h1 class="name">
+                    Hi, I'm <span>Mustafa Aslamy.</span>
+                </h1>
+                <h2>
+                    About me
+                </h2>
+                <p>
+                    I graduated from NJIT with a degree in mechnanical engineering and minor in applied mathematics and worked two jobs as solar panel design engineer at Advanced Solar Products and controls design engineer at Siemens, currently looking for work in the field of computer science and coding. I am self taught in computer science through online resources obtaining certificates from ivy league and prestigious schools such as Harvard, Duke, Princeton, Stanford, UC San Diego, Georgia Tech for courses in intro to computer science, object oriented programming, algorithms and theories, machine learning, cryptography, data structures and operating systems. I referenced <a href="https://github.com/ForrestKnight/open-source-cs">this github page</a>for the open source computer science degree that linked me to all of the courses I found through coursera, edx, and udacity.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+<!-- main section has contact info listed out in two columns such as the about section. -->
+            <div class="contact-container">
+
+                <div class="contact-content-con">
+                    <div class="left-contact">
+                        <h4>Contact me here</h4>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Location</span>
+                                </div>
+                                <p>
+                                    : Parsippany, New Jersey
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Email</span>
+                                </div>
+                                <p>
+                                    <span>: mustafa.aslamy96@gmail.com</span>
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                    <span>Mobile Number</span>
+                                </div>
+                                <p>
+                                    <span>: 862-207-9656</span>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="right-contact">
+                        <form name = "submit-to-google-sheet" onsubmit="message()" class="contact-form">
+                            <div class="input-control i-c-2">
+                                <input type="text" name="name" id="name" required placeholder="YOUR NAME">
+                                <input type="email" name="email" required placeholder="YOUR EMAIL">
+                            </div>
+                            <div class="input-control">
+                                <textarea name="message"  cols="15" rows="5" placeholder="Message Here..."></textarea>
+                            </div>
+                            <button type="submit" class="button">Submit</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </main>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwmb0fOL9047CIjWqI83QmuLURpE0u4Gw2QUO6-qxN9uqNOml1fYdXVpHaSzUB7kwT9/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                console.log('Success!', response)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
